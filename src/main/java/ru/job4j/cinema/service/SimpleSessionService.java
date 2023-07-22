@@ -58,6 +58,7 @@ public class SimpleSessionService implements SessionService {
         var sessions = sessionRepository.findAll();
         for (Session session : sessions) {
             var sessionPreview = new SessionPreview(
+                    session.getId(),
                     filmService.findById(session.getFilmId()),
                     hallService.findById(session.getHallsId()),
                     session.getStartTime(), session.getEndTime(), session.getPrice());

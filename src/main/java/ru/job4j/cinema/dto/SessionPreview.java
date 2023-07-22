@@ -7,18 +7,29 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class SessionPreview {
+    private int id;
     private Film film;
     private Hall hall;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private int price;
 
-    public SessionPreview(Film film, Hall hall, LocalDateTime startTime, LocalDateTime endTime, int price) {
+    public SessionPreview(int id, Film film, Hall hall, LocalDateTime startTime,
+                          LocalDateTime endTime, int price) {
+        this.id = id;
         this.film = film;
         this.hall = hall;
         this.startTime = startTime;
         this.endTime = endTime;
         this.price = price;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Film getFilm() {
