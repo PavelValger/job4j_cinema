@@ -1,27 +1,24 @@
 package ru.job4j.cinema.dto;
 
 import ru.job4j.cinema.model.Film;
+import ru.job4j.cinema.model.Hall;
 
 import java.time.LocalDateTime;
-import java.util.Collection;
 import java.util.Objects;
 
-public class SessionCell {
+public class SessionPreview {
     private Film film;
+    private Hall hall;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private int price;
-    private Collection<Integer> rowCount;
-    private Collection<Integer> placeInRowCount;
 
-    public SessionCell(Film film, LocalDateTime startTime, LocalDateTime endTime, int price,
-                       Collection<Integer> rowCount, Collection<Integer> placeInRowCount) {
+    public SessionPreview(Film film, Hall hall, LocalDateTime startTime, LocalDateTime endTime, int price) {
         this.film = film;
+        this.hall = hall;
         this.startTime = startTime;
         this.endTime = endTime;
         this.price = price;
-        this.rowCount = rowCount;
-        this.placeInRowCount = placeInRowCount;
     }
 
     public Film getFilm() {
@@ -30,6 +27,14 @@ public class SessionCell {
 
     public void setFilm(Film film) {
         this.film = film;
+    }
+
+    public Hall getHall() {
+        return hall;
+    }
+
+    public void setHall(Hall hall) {
+        this.hall = hall;
     }
 
     public LocalDateTime getStartTime() {
@@ -56,22 +61,6 @@ public class SessionCell {
         this.price = price;
     }
 
-    public Collection<Integer> getRowCount() {
-        return rowCount;
-    }
-
-    public void setRowCount(Collection<Integer> rowCount) {
-        this.rowCount = rowCount;
-    }
-
-    public Collection<Integer> getPlaceInRowCount() {
-        return placeInRowCount;
-    }
-
-    public void setPlaceInRowCount(Collection<Integer> placeInRowCount) {
-        this.placeInRowCount = placeInRowCount;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -80,13 +69,13 @@ public class SessionCell {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        SessionCell that = (SessionCell) o;
-        return price == that.price && Objects.equals(film, that.film)
-                && Objects.equals(startTime, that.startTime) && Objects.equals(rowCount, that.rowCount);
+        SessionPreview that = (SessionPreview) o;
+        return price == that.price && Objects.equals(film, that.film) && Objects.equals(hall, that.hall)
+                && Objects.equals(startTime, that.startTime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(film, startTime, price, rowCount);
+        return Objects.hash(film, hall, startTime, price);
     }
 }
