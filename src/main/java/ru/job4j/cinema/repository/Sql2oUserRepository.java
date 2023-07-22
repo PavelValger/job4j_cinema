@@ -21,12 +21,12 @@ public class Sql2oUserRepository implements UserRepository {
     public Optional<User> save(User user) {
         try (var connection = sql2o.open()) {
             var sql = """
-                    INSERT INTO users(email, name, password)
-                    VALUES (:email, :name, :password)
+                    INSERT INTO users(full_name, email, password)
+                    VALUES (:fullName, :email, :password)
                     """;
             var query = connection.createQuery(sql, true)
+                    .addParameter("fullName", user.getFullName())
                     .addParameter("email", user.getEmail())
-                    .addParameter("name", user.getFullName())
                     .addParameter("password", user.getPassword());
             int generatedId = query.executeUpdate().getKey(Integer.class);
             user.setId(generatedId);
@@ -44,7 +44,7 @@ public class Sql2oUserRepository implements UserRepository {
                     "SELECT * FROM users WHERE email = :email and password = :password");
             query.addParameter("email", email);
             query.addParameter("password", password);
-            var user = query.executeAndFetchFirst(User.class);
+            var user = query.setColumnMappings(User.COLUMN_MAPPING).executeAndFetchFirst(User.class);
             return Optional.ofNullable(user);
         }
     }
