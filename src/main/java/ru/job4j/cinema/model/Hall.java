@@ -82,4 +82,9 @@ public class Hall {
     public int hashCode() {
         return Objects.hash(id, name, rowCount, placeCount);
     }
+
+    @Override
+    public String toString() {
+        return "Зал " + name + " - " + description;
+    }
 }

@@ -9,6 +9,4 @@ public interface SessionRepository {
     Session findById(int id);
 
     Collection<Session> findAll();
-
-    Collection<Session> findByFilm(int filmId);
 }

@@ -6,5 +6,5 @@ import java.util.Optional;
 
 public interface TicketService {
 
-    Optional<Ticket> save(Ticket ticket);
+    Optional<Ticket> save(Ticket ticket, int sessionId, int userId);
 }

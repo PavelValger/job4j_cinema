@@ -25,18 +25,14 @@ public class SimpleFilmService implements FilmService {
     }
 
     @Override
-    public Collection<Film> findAllFilm() {
-        return filmRepository.findAll();
-    }
-
-    @Override
     public Collection<FilmPreview> findAll() {
         var films = filmRepository.findAll();
         for (Film film : films) {
             FilmPreview filmPreview = new FilmPreview(
                     film.getName(), film.getDescription(),
                     film.getYear(), film.getMinimalAge(),
-                    film.getDurationInMinutes(), genreService.findById(film.getGenreId()).getName());
+                    film.getDurationInMinutes(),
+                    genreService.findById(film.getGenreId()).getName(), film.getId());
             filmsPreview.putIfAbsent(film.getId(), filmPreview);
         }
         return filmsPreview.values();

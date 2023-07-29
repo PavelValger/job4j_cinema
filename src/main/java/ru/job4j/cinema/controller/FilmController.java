@@ -16,7 +16,7 @@ public class FilmController {
 
     @GetMapping
     public String getAll(Model model) {
-        model.addAttribute("sessions", filmService.findAll());
+        model.addAttribute("films", filmService.findAll());
         return "library/list";
     }
 }

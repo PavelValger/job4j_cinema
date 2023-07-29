@@ -6,6 +6,7 @@ import ru.job4j.cinema.dto.SessionPreview;
 import ru.job4j.cinema.model.Session;
 import ru.job4j.cinema.repository.SessionRepository;
 
+import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -13,12 +14,15 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
 public class SimpleSessionService implements SessionService {
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("EEEE dd MMMM HH:mm");
     private final SessionRepository sessionRepository;
     private final HallService hallService;
     private final FilmService filmService;
     private final ConcurrentHashMap<Integer, SessionPreview> sessionCells = new ConcurrentHashMap<>();
-    private final AtomicInteger count = new AtomicInteger();
+    private final AtomicInteger countRows = new AtomicInteger();
+    private final AtomicInteger countPlaces = new AtomicInteger();
     private final Collection<Integer> keeperPlaces = new ConcurrentLinkedQueue<>();
+    private final Collection<Integer> keeperRows = new ConcurrentLinkedQueue<>();
 
     public SimpleSessionService(SessionRepository sessionRepository,
                                 HallService hallService, FilmService filmService) {
@@ -27,30 +31,22 @@ public class SimpleSessionService implements SessionService {
         this.filmService = filmService;
     }
 
-    private void zeroing() {
-        count.set(0);
-        keeperPlaces.clear();
-    }
-
     @Override
     public SessionCell findById(int id) {
         var session = sessionRepository.findById(id);
         var film = filmService.findById(session.getFilmId());
         var hall = hallService.findById(session.getHallsId());
-        SessionCell sessionCell = new SessionCell(film, session.getStartTime(), session.getEndTime(),
-                session.getPrice(), null, null);
-        while (count.incrementAndGet() <= hall.getRowCount()) {
-            keeperPlaces.add(count.get());
+        while (countRows.incrementAndGet() <= hall.getRowCount()) {
+            keeperRows.add(countRows.get());
         }
-        sessionCell.setRowCount(keeperPlaces);
-        zeroing();
         int placeInRowCount = hall.getPlaceCount() / hall.getRowCount();
-        while (count.incrementAndGet() <= placeInRowCount) {
-            keeperPlaces.add(count.get());
+        while (countPlaces.incrementAndGet() <= placeInRowCount) {
+            keeperPlaces.add(countPlaces.get());
         }
-        sessionCell.setPlaceInRowCount(keeperPlaces);
-        zeroing();
-        return sessionCell;
+        return new SessionCell(
+                session.getId(), film, FORMATTER.format(session.getStartTime()),
+                FORMATTER.format(session.getEndTime()),
+                session.getPrice(), keeperRows, keeperPlaces);
     }
 
     @Override
@@ -61,14 +57,10 @@ public class SimpleSessionService implements SessionService {
                     session.getId(),
                     filmService.findById(session.getFilmId()),
                     hallService.findById(session.getHallsId()),
-                    session.getStartTime(), session.getEndTime(), session.getPrice());
+                    FORMATTER.format(session.getStartTime()), FORMATTER.format(session.getEndTime()),
+                    session.getPrice());
             sessionCells.putIfAbsent(session.getId(), sessionPreview);
         }
         return sessionCells.values();
-    }
-
-    @Override
-    public Collection<Session> findByFilm(int filmId) {
-        return sessionRepository.findByFilm(filmId);
     }
 }

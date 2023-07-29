@@ -9,15 +9,17 @@ public class FilmPreview {
     private int minimalAge;
     private int durationInMinutes;
     private String genre;
+    private int fileId;
 
     public FilmPreview(String name, String description, int year, int minimalAge,
-                       int durationInMinutes, String genre) {
+                       int durationInMinutes, String genre, int fileId) {
         this.name = name;
         this.description = description;
         this.year = year;
         this.minimalAge = minimalAge;
         this.durationInMinutes = durationInMinutes;
         this.genre = genre;
+        this.fileId = fileId;
     }
 
     public String getName() {
@@ -66,6 +68,14 @@ public class FilmPreview {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    public int getFileId() {
+        return fileId;
+    }
+
+    public void setFileId(int fileId) {
+        this.fileId = fileId;
     }
 
     @Override

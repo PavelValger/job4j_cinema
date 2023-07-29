@@ -3,19 +3,18 @@ package ru.job4j.cinema.dto;
 import ru.job4j.cinema.model.Film;
 import ru.job4j.cinema.model.Hall;
 
-import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class SessionPreview {
     private int id;
     private Film film;
     private Hall hall;
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
+    private String startTime;
+    private String endTime;
     private int price;
 
-    public SessionPreview(int id, Film film, Hall hall, LocalDateTime startTime,
-                          LocalDateTime endTime, int price) {
+    public SessionPreview(int id, Film film, Hall hall, String startTime,
+                          String endTime, int price) {
         this.id = id;
         this.film = film;
         this.hall = hall;
@@ -48,19 +47,19 @@ public class SessionPreview {
         this.hall = hall;
     }
 
-    public LocalDateTime getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(LocalDateTime startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public LocalDateTime getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(LocalDateTime endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 
@@ -81,12 +80,12 @@ public class SessionPreview {
             return false;
         }
         SessionPreview that = (SessionPreview) o;
-        return price == that.price && Objects.equals(film, that.film) && Objects.equals(hall, that.hall)
-                && Objects.equals(startTime, that.startTime);
+        return id == that.id && price == that.price && Objects.equals(film, that.film)
+                && Objects.equals(hall, that.hall) && Objects.equals(startTime, that.startTime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(film, hall, startTime, price);
+        return Objects.hash(id, film, hall, startTime, price);
     }
 }

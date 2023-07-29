@@ -30,13 +30,4 @@ public class Sql2oSessionRepository implements SessionRepository {
             return query.setColumnMappings(Session.COLUMN_MAPPING).executeAndFetch(Session.class);
         }
     }
-
-    @Override
-    public Collection<Session> findByFilm(int filmId) {
-        try (var connection = sql2o.open()) {
-            var query = connection.createQuery("SELECT * FROM film_sessions WHERE film_id = :filmId");
-            query.addParameter("filmId", filmId);
-            return query.setColumnMappings(Session.COLUMN_MAPPING).executeAndFetch(Session.class);
-        }
-    }
 }

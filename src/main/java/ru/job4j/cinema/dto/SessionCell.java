@@ -2,26 +2,35 @@ package ru.job4j.cinema.dto;
 
 import ru.job4j.cinema.model.Film;
 
-import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Objects;
 
 public class SessionCell {
+    private int id;
     private Film film;
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
+    private String startTime;
+    private String endTime;
     private int price;
     private Collection<Integer> rowCount;
     private Collection<Integer> placeInRowCount;
 
-    public SessionCell(Film film, LocalDateTime startTime, LocalDateTime endTime, int price,
-                       Collection<Integer> rowCount, Collection<Integer> placeInRowCount) {
+    public SessionCell(int id, Film film, String startTime, String endTime,
+                       int price, Collection<Integer> rowCount, Collection<Integer> placeInRowCount) {
+        this.id = id;
         this.film = film;
         this.startTime = startTime;
         this.endTime = endTime;
         this.price = price;
         this.rowCount = rowCount;
         this.placeInRowCount = placeInRowCount;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Film getFilm() {
@@ -32,19 +41,19 @@ public class SessionCell {
         this.film = film;
     }
 
-    public LocalDateTime getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(LocalDateTime startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public LocalDateTime getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(LocalDateTime endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 

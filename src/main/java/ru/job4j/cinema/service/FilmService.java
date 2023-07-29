@@ -9,7 +9,5 @@ public interface FilmService {
 
     Film findById(int id);
 
-    Collection<Film> findAllFilm();
-
     Collection<FilmPreview> findAll();
 }
