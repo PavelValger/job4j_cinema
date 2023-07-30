@@ -16,8 +16,9 @@ Java 17, Maven 3.8, PostgreSQL 15.
 
 ### Запуск проекта :running:.
 ```Скачать проект job4j_cinema в IntelliJ Idea```
-``` ```
+
 ```Создать БД "cinema" (с помощью pgAdmin4)```
+
 ```Cоздайте и заполните таблицы БД  "cinema". Откройте закладку Maven -> plugins -> liquibase. Найдите задачу liquibase:update и выполните ее.```
 ```Запустите приложение в классе Main (ru/job4j/cinema/Main.java)```
 ```Откройте страницу http://localhost:8080/ в браузере```
