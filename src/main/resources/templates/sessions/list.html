@@ -9,6 +9,13 @@
           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
     <title>Расписание</title>
+    <style>
+    body {
+    background-color: HoneyDew;
+    }
+
+    </style>
+
 </head>
 <body>
 <div class="container-fluid p-0">
@@ -22,7 +29,9 @@
                         <img th:src="@{/files/{fileId}(fileId=${sessionPrev.film.fileId})}" width="250" alt="No image"/>
                     </td>
                     <td>
-                        <h3><a th:text="${sessionPrev.film.name}" th:href="@{/sessions/{id}(id=${sessionPrev.id})}"></a></h3>
+                        <h3><a style="color: GoldenRod; text-decoration: none;" th:text="${sessionPrev.film.name}"
+                               th:href="@{/sessions/{id}(id=${sessionPrev.id})}"></a>
+                        </h3>
                         <h6><span th:text="${sessionPrev.film.minimalAge}"></span>+</h6>
                         <h7><span th:text="${sessionPrev.hall}"></span>.</h7>
                         <br>

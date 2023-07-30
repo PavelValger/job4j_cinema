@@ -9,9 +9,9 @@
 
 ### Стек технологий :technologist:.
 Основные: Java 17, Spring Boot 2.7.6, Thymeleaf, Bootstrap CSS, Liquibase 4.15.0, Sql2o 1.6.0, PostgreSQL 15.1 (драйвер JDBC 42.5.1), checkstyle 10.0.
-Тестирование: H2database 2.1.214, jacoco 0.8.8, spring-boot-starter-test (JUnit 5 + AssertJ, Mockito).
+Тестирование: H2database 2.1.214, jacoco 0.8.8, spring boot starter test (JUnit 5 + AssertJ, Mockito).
 
-### Требования к окружению :white_circle:.
+### Требования к окружению :black_circle:.
 Java 17, Maven 3.8, PostgreSQL 15.
 
 ### Запуск проекта :running:.
@@ -20,10 +20,12 @@ Java 17, Maven 3.8, PostgreSQL 15.
 ```Создать БД "cinema" (с помощью pgAdmin4)```
 
 ```Cоздайте и заполните таблицы БД  "cinema". Откройте закладку Maven -> plugins -> liquibase. Найдите задачу liquibase:update и выполните ее.```
+
 ```Запустите приложение в классе Main (ru/job4j/cinema/Main.java)```
+
 ```Откройте страницу http://localhost:8080/ в браузере```
 
-### Screenshots работы с приложением Кинотеатр.
+### Screenshots работы с приложением Кинотеатр :cinema:.
 
 
 #### Контакты для связи :iphone::
