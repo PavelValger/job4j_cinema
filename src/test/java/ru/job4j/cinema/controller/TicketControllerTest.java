@@ -50,7 +50,7 @@ class TicketControllerTest {
         var actualSessionCellId = sessionCellArgumentCaptor.getValue();
         var actualUserId = userArgumentCaptor.getValue();
 
-        assertThat(view).isEqualTo("request/200.html");
+        assertThat(view).isEqualTo("request/200");
         assertThat(actualTicket).isEqualTo(ticket);
         assertThat(actualMessage).isEqualTo("Вы успешно приобрели билет. Ряд: 1, место: 1");
         assertThat(actualSessionCellId).isEqualTo(session.getId());
@@ -73,7 +73,7 @@ class TicketControllerTest {
         var view = ticketController.register(model, mockHttpSession, new Ticket());
         var actualMessage = model.getAttribute("message");
 
-        assertThat(view).isEqualTo("errors/404");
+        assertThat(view).isEqualTo("errors/409");
         assertThat(actualMessage).isEqualTo("Не удалось приобрести билет на заданное место. "
                 + "Вероятно оно уже занято. Перейдите на страницу бронирования билетов "
                 + "и попробуйте снова.");

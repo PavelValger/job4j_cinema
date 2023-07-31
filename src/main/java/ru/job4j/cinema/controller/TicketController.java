@@ -30,12 +30,12 @@ public class TicketController {
                     "Не удалось приобрести билет на заданное место. "
                             + "Вероятно оно уже занято. Перейдите на страницу бронирования билетов "
                             + "и попробуйте снова.");
-            return "errors/404";
+            return "errors/409";
         }
         model.addAttribute("message",
                 String.format("Вы успешно приобрели билет. Ряд: %s, место: %s",
                         savedTicket.get().getRowNumber(),
                         savedTicket.get().getPlaceNumber()));
-        return "request/200.html";
+        return "request/200";
     }
 }

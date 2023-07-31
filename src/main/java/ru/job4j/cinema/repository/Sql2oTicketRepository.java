@@ -33,7 +33,7 @@ public class Sql2oTicketRepository implements TicketRepository {
             ticket.setId(generatedId);
             return Optional.of(ticket);
         } catch (Exception exception) {
-            LOG.info("Неудачная покупка билета. Exception in log example", exception);
+            LOG.error("Неудачная покупка билета. Exception in log example", exception);
         }
         return Optional.empty();
     }

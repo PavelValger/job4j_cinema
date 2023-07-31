@@ -11,11 +11,25 @@
 * хранить данные пользователей и билетов в БД.
 
 ### Стек технологий :technologist:.
-Основные: Java 17, Spring Boot 2.7.6, Thymeleaf, Bootstrap CSS, Liquibase 4.15.0, Sql2o 1.6.0, PostgreSQL 15.1 (драйвер JDBC 42.5.1), checkstyle 10.0.
-Тестирование: H2database 2.1.214, jacoco 0.8.8, spring boot starter test (JUnit 5 + AssertJ, Mockito).
+Основные :man_technologist:: 
+- Java 17
+- Spring Boot 2.7.6
+- Thymeleaf
+- Bootstrap CSS
+- Liquibase 4.15.0
+- Sql2o 1.6.0
+- PostgreSQL 15.1 (драйвер JDBC 42.5.1)
+- checkstyle 10.0.
+
+Тестирование :mechanic::
+- H2database 2.1.214
+- Jacoco 0.8.8
+- Spring boot starter test (JUnit 5 + AssertJ, Mockito).
 
 ### Требования к окружению :black_circle:.
-Java 17, Maven 3.8, PostgreSQL 15.
+- Java 17
+- Maven 3.8
+- PostgreSQL 15.
 
 ### Запуск проекта :running:.
 ```Скачать проект job4j_cinema в IntelliJ Idea```
@@ -46,6 +60,10 @@ Java 17, Maven 3.8, PostgreSQL 15.
 
   ![](https://raw.githubusercontent.com/PavelValger/job4j_cinema/master/img/registr.jpg)
 
+- [x] Страница регистрации - ошибка дублирования пользователя
+
+  ![](https://raw.githubusercontent.com/PavelValger/job4j_cinema/master/img/errorRegistr.jpg)
+
 - [x] Страница вход
 
   ![](https://raw.githubusercontent.com/PavelValger/job4j_cinema/master/img/identi.jpg)
@@ -60,7 +78,7 @@ Java 17, Maven 3.8, PostgreSQL 15.
 
 - [x] Страница с результатом неудачной покупки билета (билет уже купили)
 
-  ![](https://raw.githubusercontent.com/PavelValger/job4j_cinema/master/img/error.jpg)
+  ![](https://raw.githubusercontent.com/PavelValger/job4j_cinema/master/img/conflict.jpg)
 
 
 #### Контакты для связи :iphone::
