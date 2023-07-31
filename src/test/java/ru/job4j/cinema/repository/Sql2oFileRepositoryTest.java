@@ -31,7 +31,7 @@ class Sql2oFileRepositoryTest {
 
     @Test
     public void whenFindFileByIdThenGetSame() {
-        File file = new File(1, "Звёздные войны", "files/starwars");
+        File file = new File(1, "Звёздные войны", "files/starwars.jpg");
         assertThat(sql2oFileRepository.findById(file.getId()).get()).usingRecursiveComparison().isEqualTo(file);
     }
 }
